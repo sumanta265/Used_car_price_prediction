@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="static/css.css">
+<script>
+var stateObject = {
+"Maruti": ["Maruti Ertiga showroom condition with","Maruti Suzuki 800","Maruti Suzuki 800 Std BS II","Maruti Suzuki A Star Lxi","Maruti Suzuki Alto","Maruti Suzuki Alto 800","Maruti Suzuki Alto 800 Select Variant","Maruti Suzuki Alto 800 LXI CNG O","Maruti Suzuki Alto 800 Lx"],
+"Toyota":["Toyota Corolla","Toyota Corolla Altis","Toyota Corolla Altis 1.8 GL","Toyota Corolla Altis 1.8 J","Toyota Corolla Altis Diesel D4DG"],
+"Hyundai":["Hyundai Accent","Hyundai Accent Executive Edition","Hyundai Accent GLE","Hyundai Accent GLX","Hyundai Creta","Hyundai Elantra SX","Hyundai Elantra 1.8 S","Hyundai Creta 1.6 SX Plus Petrol AT"],
+"Audi":["Audi A3 Cabriolet 40 TFS","Audi A4 1.8 TFSI Multitronic Premium Plus","Audi A4 2.0 TDI 177bhp Premium","Audi A6 2.0 TDI Premium","Audi A8","Audi Q3 2.0 TDI quattro Premium","Audi Q5 2.0 TDI quattro Premium Plus","Audi Q7"],
+"BMW":["BMW 3 Series 320d Sedan","BMW 3 Series 320i","BMW 5 Series 520d Sedan","BMW 5 Series 530i","BMW 7 Series 740Li Sedan","BMW X1","BMW X1 sDrive20d","BMW X1 xDrive20d xLine"],
+"Chevrolet":["Chevrolet Beat","Chevrolet Beat Diesel","Chevrolet Beat LS Diesel","Chevrolet Beat LS Petrol","Chevrolet Beat LT Diesel","Chevrolet Beat LT Opt Diesel","Chevrolet Beat LT Petrol","Chevrolet Beat PS Diesel","Chevrolet Cruze LTZ","Chevrolet Cruze LTZ AT"],
+"Datsun":["Datsun GO T O","Datsun Go Plus","Datsun Go Plus T O","Datsun Redi GO","Datsun Redi GO S","Datsun Redi GO T O"],
+"Fiat":["Fiat Linea Emotion 1.4 L T Jet Petrol","Fiat Petra ELX 1.2 PS","Fiat Punto Emotion 1.2"],
+"Force":["Force Motors Force One LX ABS 7 STR","Force Motors One SUV"],
+"Ford":["Ford EcoSport","Ford EcoSport Ambiente 1.5L TDCi","Ford EcoSport Titanium 1.5 TDCi","Ford EcoSport Titanium 1.5L TDCi","Ford EcoSport Trend 1.5 Ti VCT","Ford EcoSport Trend 1.5L TDC","Ford Endeavor 4x4 Thunder Plus","Ford Fiesta","Ford Fiesta SXi 1.6 ABS"]
+}
+
+window.onload = function () {
+var inputcompany = document.getElementById("inputcompany"),
+
+inputmodel= document.getElementById("inputmodel");
+for (var car in stateObject) {
+inputcompany.options[inputcompany.options.length] = new Option(car, car);
+}
+inputcompany.onchange = function () {
+ // remove all options bar first
+inputmodel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done
+var carmodel = stateObject[this.value];
+for (var i = 0; i < carmodel.length; i++) {
+inputmodel.options[inputmodel.options.length] = new Option(carmodel[i], carmodel[i]);
+}
+
+}
+}
+
+</script>
+    <style type="text/css">
+  .container
+    {
+      background-color: lightblue;
+      margin: 0 auto;
+      border: 5px outset black;
+
+    }
+</style>
+
+</HEAD>
+
+
+<body>
+<div class="container ">
+<h1>Welcome to Car Price Predictor</h1>
+<p>This app predicts the price of a car you want to sell. Try filling the details below:</p>
+<form action="\predict" method="post">
+    <div class="form-row">
+    <div class="form-group col-md-8">
+        <label for="inputcompany">Select the company:</label>
+        <select id="inputcompany"name="company" class="form-control" size="1">
+            <option value="" selected="selected">Select Company</option>
+
+        </select>
+    </div>
+    </div>
+
+<div class="form-row">
+    <div class="form-group col-md-8">
+        <label for="inputmodel">Select the model:</label>
+        <select id="inputmodel"name="model" class="form-control" size="1">
+            <option value="" selected="selected">Select model</option>
+
+        </select>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-8">
+        <label for="inputPurchase">State Year of Purchase:</label>
+        <select id="inputPurchase"  name="year"class="form-control">
+            <option selected>Select year</option>
+            <option>2002</option>
+            <option>2003</option>
+            <option>2004</option>
+            <option>2005</option>
+            <option>2006</option>
+            <option>2007</option>
+            <option>2008</option>
+            <option>2009</option>
+            <option>2010</option>
+            <option>2011</option>
+            <option>2012</option>
+            <option>2013</option>
+            <option>2014</option>
+            <option>2015</option>
+            <option>2016</option>
+            <option>2017</option>
+            <option>2018</option>
+            <option>2019</option>
+        </select>
+    </div>
+</div>
+    <div class="form-row">
+    <div class="form-group col-md-5">
+        <label for="inputState">Select the Fuel Type:</label>
+        <select id="inputState" name="fuel" class="form-control">
+            <option selected>Choose...</option>
+            <option>Petrol</option>
+            <option>Diesel</option>
+            <option>LPG</option>
+        </select>
+    </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col-md-5">
+        <label for="inputNumber">Enter the Number of Kilometres that the car has travelled:</label>
+        <input type="text" class="form-control" name="km" id="inputNumber">
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Predict Price</button>
+</form>
+<br>
+        <br>
+        <h3>{{ prediction_text }}</h3>
+
+        <br>
+        <br>
+
+</div>
+</body>
+</html>
